@@ -289,7 +289,7 @@ iterRunes:
 				// 2013-Feb-03
 				// 13-Feb-03
 				// 29-Jun-2016
-				if i == 4 {
+				if i >= 4 {
 					p.stateDate = dateYearDash
 					p.yeari = 0
 					p.yearlen = i
@@ -303,7 +303,7 @@ iterRunes:
 				// 03/31/2005
 				// 2014/02/24
 				p.stateDate = dateDigitSlash
-				if i == 4 {
+				if i >= 4 {
 					// 2014/02/24  -  Year first /
 					p.yearlen = i // since it was start of datestr, i=len
 					p.moi = i + 1
@@ -348,7 +348,7 @@ iterRunes:
 				// 03/31/2005
 				// 2014/02/24
 				p.stateDate = dateDigitColon
-				if i == 4 {
+				if i >= 4 {
 					p.yearlen = i
 					p.moi = i + 1
 					p.setYear()
