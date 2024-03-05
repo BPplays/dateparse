@@ -510,7 +510,7 @@ iterRunes:
 				// or 2 digits which makes it ambiguous year/day
 				length := i - (p.moi + p.molen + 1)
 				if length >= 4 {
-					p.yearlen = 4
+					p.yearlen = length
 					p.set(p.yeari, "2006")
 					// We now also know that part1 was the day
 					p.dayi = 0
@@ -1383,7 +1383,7 @@ iterRunes:
 				// 15:44:11 UTC+0100 2015
 				if unicode.IsDigit(r) {
 					p.yearlen = i - p.yeari + 1
-					if p.yearlen == 4 {
+					if p.yearlen >= 4 {
 						p.setYear()
 					}
 				}
@@ -1454,7 +1454,7 @@ iterRunes:
 					switch {
 					case unicode.IsDigit(r):
 						p.yearlen = i - p.yeari + 1
-						if p.yearlen == 4 {
+						if p.yearlen >= 4 {
 							p.setYear()
 						}
 					case unicode.IsLetter(r):
@@ -1823,8 +1823,8 @@ iterRunes:
 		// 28-Feb-03   ambiguous
 		// 29-Jun-2016
 		length := len(datestr) - (p.moi + p.molen + 1)
-		if length == 4 {
-			p.yearlen = 4
+		if length >= 4 {
+			p.yearlen = length
 			p.set(p.yeari, "2006")
 			// We now also know that part1 was the day
 			p.dayi = 0
@@ -2062,7 +2062,7 @@ func (p *parser) setDay() {
 func (p *parser) setYear() {
 	if p.yearlen == 2 {
 		p.set(p.yeari, "06")
-	} else if p.yearlen == 4 {
+	} else if p.yearlen >= 4 {
 		p.set(p.yeari, "2006")
 	}
 }
