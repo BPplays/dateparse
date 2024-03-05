@@ -368,7 +368,7 @@ iterRunes:
 				// 08.21.71
 				// 2014.05
 				p.stateDate = dateDigitDot
-				if i == 4 {
+				if i >= 4 {
 					p.yearlen = i
 					p.moi = i + 1
 					p.setYear()
@@ -509,7 +509,7 @@ iterRunes:
 				// we need to find if this was 4 digits, aka year
 				// or 2 digits which makes it ambiguous year/day
 				length := i - (p.moi + p.molen + 1)
-				if length == 4 {
+				if length >= 4 {
 					p.yearlen = 4
 					p.set(p.yeari, "2006")
 					// We now also know that part1 was the day
